@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AspNetForum.Data;
 using AspNetForum.Data.Models;
+using AspNetForum.Data.Interfaces;
+using AspNetForum.Service;
 
 namespace AspNetForum
 {
@@ -36,6 +38,8 @@ namespace AspNetForum
 
             services.AddDefaultIdentity<ApplicationUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IForum, ForumService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

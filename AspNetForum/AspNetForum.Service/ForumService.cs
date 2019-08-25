@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AspNetForum.Data;
 using AspNetForum.Data.Interfaces;
@@ -39,7 +40,14 @@ namespace AspNetForum.Service
 
         public Forum GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return _context.Forums
+                .Where(forum => forum.Id == id)
+                .Include(forum => forum.Posts)
+                    .ThenInclude(post => post.User)
+                .Include(forum => forum.Posts)
+                    .ThenInclude(post => post.Replies)
+                        .ThenInclude(reply => reply.User)
+                .First();
         }
 
         public Task UpdateForumDescription(int id, string description)
