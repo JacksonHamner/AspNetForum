@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetForum", "AspNetForum\AspNetForum.csproj", "{8223716A-B164-474F-A497-EF8A131D083B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetForum", "AspNetForum\AspNetForum.csproj", "{8223716A-B164-474F-A497-EF8A131D083B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetForum.Data", "AspNetForum.Data\AspNetForum.Data.csproj", "{3D5C38D7-4DEE-4FA0-B046-DF59AC834AD7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetForum.Service", "AspNetForum.Service\AspNetForum.Service.csproj", "{D1BF839F-7FA5-4ACE-850D-CFF91E40C10B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetForum.Data", "AspNetForum.Data\AspNetForum.Data.csproj", "{3D5C38D7-4DEE-4FA0-B046-DF59AC834AD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{59FE6E3F-01EA-4614-938E-2A4AE7E72698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetForum.Service", "AspNetForum.Service\AspNetForum.Service.csproj", "{BAA4A793-ED56-4B74-A3B3-F54F35F04025}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,17 +25,17 @@ Global
 		{3D5C38D7-4DEE-4FA0-B046-DF59AC834AD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D5C38D7-4DEE-4FA0-B046-DF59AC834AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D5C38D7-4DEE-4FA0-B046-DF59AC834AD7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D1BF839F-7FA5-4ACE-850D-CFF91E40C10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1BF839F-7FA5-4ACE-850D-CFF91E40C10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1BF839F-7FA5-4ACE-850D-CFF91E40C10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D1BF839F-7FA5-4ACE-850D-CFF91E40C10B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{3D5C38D7-4DEE-4FA0-B046-DF59AC834AD7} = {59FE6E3F-01EA-4614-938E-2A4AE7E72698}
-		{D1BF839F-7FA5-4ACE-850D-CFF91E40C10B} = {59FE6E3F-01EA-4614-938E-2A4AE7E72698}
+		{BAA4A793-ED56-4B74-A3B3-F54F35F04025} = {59FE6E3F-01EA-4614-938E-2A4AE7E72698}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EA5261E5-0B5B-4D16-9C8D-5C37F956B064}
