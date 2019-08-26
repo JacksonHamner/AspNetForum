@@ -3,8 +3,8 @@
 <div class="container" body-content>
     <div class="row frontPageSplash">
         <div class="col-md-6 frontPageLearn">
-            <div class="frontPageHeading">Lear, Collaborate, Share Knowledge</div>
-            <p class="frontPageSubheading">AspNetForums is a coding forum</p>
+            <div class="frontPageHeading">Learn, Collaborate, Share Knowledge</div>
+            <p class="frontPageSubHeading">AspNetForums is a coding forum</p>
             <div>
                 <form asp-controller="Search" asp-action="Search" method="post">
                     <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search..." />
@@ -23,7 +23,7 @@
                 {
                     <tr>
                         <td>
-                            <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl); background-size: 100%;">
+                            <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);">
 
                             </div>
                             <div class="postTitle">
