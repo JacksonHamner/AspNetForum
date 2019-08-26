@@ -40,7 +40,11 @@ namespace AspNetForum.Service
 
         public IEnumerable<Post> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Posts
+                .Include(post => post.User)
+                .Include(post => post.Replies)
+                    .ThenInclude(reply => reply.User)
+                .Include(post => post.Forum);
         }
 
         public Post GetById(int id)
@@ -58,6 +62,14 @@ namespace AspNetForum.Service
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Post> GetLatestPost(int numberOfPosts)
+        {
+           return GetAll()
+                .OrderByDescending(post => post.Created)
+                .Take(numberOfPosts);
+        }
+
         public IEnumerable<Post> GetPostsByForum(int id)
         {
             return _context.Forums

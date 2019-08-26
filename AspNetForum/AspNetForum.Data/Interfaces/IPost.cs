@@ -12,10 +12,12 @@ namespace AspNetForum.Data.Interfaces
         IEnumerable<Post> GetAll();
         IEnumerable<Post> GetFilteredPosts(string searchQuery);
         IEnumerable<Post> GetPostsByForum(int id);
+        IEnumerable<Post> GetLatestPost(int numberOfPosts);
 
         Task Add(Post post);
         Task Delete(int id);
         Task EditPostContent(int id, string content);
         Task AddReply(PostReply reply);
+        
     }
 }
