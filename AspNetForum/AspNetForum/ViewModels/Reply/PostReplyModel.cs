@@ -14,6 +14,7 @@ namespace AspNetForum.ViewModels.Reply
         public int AuthorRating { get; set; }
         public DateTime Created { get; set; }
         public string ReplyContent { get; set; }
+        public bool IsAdmin { get; set; }
 
         public int PostId { get; set; }
     }

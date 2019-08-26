@@ -16,6 +16,10 @@ namespace AspNetForum.ViewModels.Post
         public int AuthorRating { get; set; }
         public DateTime Created { get; set; }
         public string PostContent { get; set; }
+        public bool IsAdmin { get; set; }
+
+        public int ForumId { get; set; }
+        public string ForumTitle { get; set; }
 
         public IEnumerable<PostReplyModel> Replies { get; set; }
 
