@@ -58,9 +58,13 @@ namespace AspNetForum.Service
                 .First();
         }
 
-        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        public IEnumerable<Post> GetFilteredPosts(Forum forum, string searchQuery)
         {
-            throw new NotImplementedException();
+            return string.IsNullOrEmpty(searchQuery) 
+                ? forum.Posts 
+                : forum.Posts.Where(post 
+                    => post.Title.ToLowerInvariant().Contains(searchQuery.ToLowerInvariant()) 
+                    || post.Content.ToLowerInvariant().Contains(searchQuery.ToLowerInvariant()));
         }
 
         public IEnumerable<Post> GetLatestPost(int numberOfPosts)
