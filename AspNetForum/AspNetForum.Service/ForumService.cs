@@ -47,7 +47,7 @@ namespace AspNetForum.Service
                 .Include(forum => forum.Posts)
                     .ThenInclude(post => post.Replies)
                         .ThenInclude(reply => reply.User)
-                .First();
+                .FirstOrDefault();
         }
 
         public Task UpdateForumDescription(int id, string description)
