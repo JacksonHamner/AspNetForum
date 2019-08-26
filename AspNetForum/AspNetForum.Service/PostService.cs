@@ -1,14 +1,22 @@
-﻿using AspNetForum.Data.Interfaces;
+﻿using AspNetForum.Data;
+using AspNetForum.Data.Interfaces;
 using AspNetForum.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AspNetForum.Service
 {
     public class PostService : IPost
     {
+        private readonly ApplicationDbContext _context;
+        public PostService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         public Task Add(Post post)
         {
             throw new NotImplementedException();
@@ -42,6 +50,12 @@ namespace AspNetForum.Service
         public IEnumerable<Post> GetFilteredPosts(string searchQuery)
         {
             throw new NotImplementedException();
+        }
+        public IEnumerable<Post> GetPostsByForum(int id)
+        {
+            return _context.Forums
+                .Where(forum => forum.Id == id).First()
+                .Posts;
         }
     }
 }

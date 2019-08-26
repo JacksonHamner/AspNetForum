@@ -40,6 +40,7 @@ namespace AspNetForum
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IForum, ForumService>();
+            services.AddScoped<IPost, PostService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

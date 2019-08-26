@@ -1,7 +1,9 @@
 ﻿using AspNetForum.Data.Interfaces;
 using AspNetForum.Data.Models;
 using AspNetForum.ViewModels.Forum;
+using AspNetForum.ViewModels.Post;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -38,10 +40,42 @@ namespace AspNetForum.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
-            var posts = _postService.GetFilteredPosts(id);
+            var posts =forum.Posts;
 
+            var postListing = posts.Select(post => new PostListingModel
+            {
+                Id = post.Id,
+                Title = post.Title,
+                AuthorId = post.User.Id,
+                AuthorRating = post.User.Rating,
+                DatePosted = post.Created.ToString(),
+                RepliesCount = post.Replies.Count(),
+                Forum = BuildForumListing(post)
+            });
 
-            return View();
+            var model = new ForumTopicModel {
+                Posts = postListing,
+                Forum = BuildForumListing(forum)
+            };
+
+            return View(model);
+        }
+
+        private ForumListingModel BuildForumListing(Forum forum)
+        {
+            return new ForumListingModel
+            {
+                Id = forum.Id,
+                Title = forum.Title,
+                Description = forum.Description,
+                ImageUrl = forum.ImageUrl
+            };
+        }
+
+        private ForumListingModel BuildForumListing(Post post)
+        {
+            var forum = post.Forum;
+            return BuildForumListing(forum);
         }
     }
 }
