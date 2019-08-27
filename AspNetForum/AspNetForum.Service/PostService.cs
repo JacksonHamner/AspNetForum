@@ -67,6 +67,13 @@ namespace AspNetForum.Service
                     || post.Content.ToLowerInvariant().Contains(searchQuery.ToLowerInvariant()));
         }
 
+        public IEnumerable<Post> GetFilteredPosts(string searchQuery)
+        {
+            return GetAll().Where(post
+                    => post.Title.ToLowerInvariant().Contains(searchQuery.ToLowerInvariant())
+                    || post.Content.ToLowerInvariant().Contains(searchQuery.ToLowerInvariant()));
+        }
+
         public IEnumerable<Post> GetLatestPost(int numberOfPosts)
         {
            return GetAll()
