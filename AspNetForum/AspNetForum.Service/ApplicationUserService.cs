@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AspNetForum.Service
 {
-    class ApplicationUserService : IApplicationUser
+    public class ApplicationUserService : IApplicationUser
     {
         private readonly ApplicationDbContext _context;
         public ApplicationUserService(ApplicationDbContext context)

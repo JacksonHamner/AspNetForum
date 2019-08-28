@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AspNetForum.Data.Interfaces;
 
 namespace AspNetForum.Service
 {
-    class UploadService
+    public class UploadService : IUpload
     {
     }
 }
