@@ -24,8 +24,8 @@ namespace AspNetForum.Service
 
         public ApplicationUser GetById(string id)
         {
-            return GetAll().FirstOrDefault(
-                user => user.Id == id);
+            return GetAll()
+                .FirstOrDefault(user => user.Id == id);
         }
 
         public Task IncrementRating(string id, Type type)

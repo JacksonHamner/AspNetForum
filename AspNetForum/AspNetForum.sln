@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetForum.Service", "AspNetForum.Service\AspNetForum.Service.csproj", "{BAA4A793-ED56-4B74-A3B3-F54F35F04025}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testmvc", "testmvc\testmvc.csproj", "{D944F05D-67C3-4039-8AC4-582EAC7DC9E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAA4A793-ED56-4B74-A3B3-F54F35F04025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D944F05D-67C3-4039-8AC4-582EAC7DC9E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D944F05D-67C3-4039-8AC4-582EAC7DC9E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D944F05D-67C3-4039-8AC4-582EAC7DC9E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D944F05D-67C3-4039-8AC4-582EAC7DC9E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
