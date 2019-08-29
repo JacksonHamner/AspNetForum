@@ -8,6 +8,7 @@ using System.Linq;
 using AspNetForum.ViewModels.Post;
 using AspNetForum.ViewModels.Forum;
 using AspNetForum.Data.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace AspNetForum.Controllers
 {
@@ -25,6 +26,7 @@ namespace AspNetForum.Controllers
         public IActionResult Index()
         {
             var model = BuildHomeIndexModel();
+
             return View(model);
         }
 

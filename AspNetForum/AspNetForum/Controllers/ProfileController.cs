@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AspNetForum.Data.Interfaces;
 using AspNetForum.Data.Models;
 using AspNetForum.ViewModels.ApplicationUser;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,25 @@ namespace AspNetForum.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadProfileImage(IFormFile file)
+        {
+            var userId = _userManager.GetUserId(User);
+
+            //connect to azure storage container
+            //get Blob Container
+
+            //Parse the content disposition response header
+            //grab the filename
+
+            //get a reference to a block blob
+            //on that block blob, upload our file
+
+            //set Users profile image to the URI
+
+            return View();
         }
     }
 }
