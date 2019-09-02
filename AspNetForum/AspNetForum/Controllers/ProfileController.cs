@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AspNetForum.Data.Interfaces;
 using AspNetForum.Data.Models;
@@ -8,6 +9,7 @@ using AspNetForum.ViewModels.ApplicationUser;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 
 namespace AspNetForum.Controllers
 {
@@ -16,13 +18,15 @@ namespace AspNetForum.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IApplicationUser _userService;
         private readonly IUpload _uploadService;
+        private readonly IConfiguration _configuration;
         
 
-        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService)
+        public ProfileController(UserManager<ApplicationUser> userManager, IApplicationUser userService, IUpload uploadService, IConfiguration configuration)
         {
             _userManager = userManager;
             _userService = userService;
             _uploadService = uploadService;
+            _configuration = configuration;
         }
 
         public IActionResult Detail(string id)
@@ -50,17 +54,28 @@ namespace AspNetForum.Controllers
             var userId = _userManager.GetUserId(User);
 
             //connect to azure storage container
+            var connectionString = _configuration.GetConnectionString("AzureStorageAccount");
+            
             //get Blob Container
+            var container = _uploadService.GetBlobContainer(connectionString);
 
             //Parse the content disposition response header
+            var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
+
             //grab the filename
+            var filename = contentDisposition.FileName.Trim('"');
 
             //get a reference to a block blob
+            var blockBlob = container.GetBlockBlobReference(filename);
+
             //on that block blob, upload our file
+            await blockBlob.UploadFromStreamAsync(file.OpenReadStream());
 
             //set Users profile image to the URI
+            await _userService.SetProfileImage(userId, blockBlob.Uri);
 
-            return View();
+            //Redirect
+            return RedirectToAction("Detail", "Profile", new { id = userId });
         }
     }
 }
