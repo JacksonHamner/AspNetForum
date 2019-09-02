@@ -11,12 +11,14 @@ namespace AspNetForum.Controllers
     public class ReplyController : Controller
     {
         private readonly IPost _postService;
+        private readonly IApplicationUser _userService;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public ReplyController(IPost postService, UserManager<ApplicationUser> userManager)
+        public ReplyController(IPost postService, UserManager<ApplicationUser> userManager, IApplicationUser userService)
         {
             _postService = postService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public async Task<IActionResult> Create(int id)
@@ -42,7 +44,7 @@ namespace AspNetForum.Controllers
                 ForumImageUrl = post.Forum.ImageUrl
             };
 
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -54,6 +56,8 @@ namespace AspNetForum.Controllers
             var reply = BuildReply(model, user);
 
             await _postService.AddReply(reply);
+
+            await _userService.UpdateUserRating(user.Id, typeof(PostReply));
 
             return RedirectToAction("Index", "Post", new { id = model.PostId });
         }

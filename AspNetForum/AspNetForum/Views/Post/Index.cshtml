@@ -18,11 +18,12 @@
             <a asp-controller="Profile" asp-action="Detail" asp-route-id="@Model.AuthorId">
                 @Model.AuthorName
             </a>
-            <span class="postData">@Model.Created</span>
             @if (Model.IsAdmin)
             {
-                <span class="isAdmin smaller">Admin</span>
+                <div class="isAdmin smaller">Admin</div>
+                <br />
             }
+            <span class="postData">@Model.Created</span>
         </div>
         <div class="col-md-9 postContentContainer">
             <div class="postContent">
@@ -60,12 +61,13 @@
                         <br />
                     }
                     <span> @reply.Created</span>
-                    <div class="col-md-9 replyContentContainer">
-                        <div class="postContent">
-                            @Html.Raw(reply.ReplyContent)
-                        </div>
+                </div>
+                <div class="col-md-9 replyContentContainer">
+                    <div class="postContent">
+                        @Html.Raw(reply.ReplyContent)
                     </div>
                 </div>
+
             </div>
         }
     }

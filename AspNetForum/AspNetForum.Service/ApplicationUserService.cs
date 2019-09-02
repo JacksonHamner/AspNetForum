@@ -28,9 +28,15 @@ namespace AspNetForum.Service
                 .FirstOrDefault(user => user.Id == id);
         }
 
-        public Task IncrementRating(string id, Type type)
+        public async Task UpdateUserRating(string id, Type type)
         {
-            throw new NotImplementedException();
+            //id is userId
+            var user = GetById(id);
+
+            user.Rating = CalculateUserRating(type, user.Rating);
+
+            await _context.SaveChangesAsync();
+
         }
 
         public async Task SetProfileImage(string id, Uri uri)
@@ -39,6 +45,21 @@ namespace AspNetForum.Service
             user.ProfileImageUrl = uri.AbsoluteUri;
             _context.Update(user);
             await _context.SaveChangesAsync();
+        }
+
+        private int CalculateUserRating(Type type, int userRating)
+        {
+            var inc = 0;
+            if(type == typeof(Post))
+            {
+                inc = 1;
+            }
+            if (type == typeof(PostReply))
+            {
+                inc = 3;
+            }
+
+            return userRating + inc;
         }
     }
 }
