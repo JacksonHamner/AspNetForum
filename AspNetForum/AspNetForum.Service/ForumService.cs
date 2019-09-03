@@ -17,14 +17,18 @@ namespace AspNetForum.Service
             _context = context;
         }
 
-        public Task Create(Forum forum)
+        public async Task Create(Forum forum)
         {
-            throw new System.NotImplementedException();
+            _context.Add(forum);
+            await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new System.NotImplementedException();
+            var forum = GetById(id);
+
+            _context.Remove(forum);
+            await _context.SaveChangesAsync();
         }
 
         public IEnumerable<Forum> GetAll()
