@@ -7,6 +7,6 @@ namespace AspNetForum.Data.Interfaces
 {
     public interface IUpload
     {
-        CloudBlobContainer GetBlobContainer(string connectionString);
+        CloudBlobContainer GetBlobContainer(string connectionString, string containerName);
     }
 }

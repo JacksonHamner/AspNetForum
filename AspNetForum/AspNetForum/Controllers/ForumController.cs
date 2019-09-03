@@ -113,13 +113,13 @@ namespace AspNetForum.Controllers
         private CloudBlockBlob UploadForumImage(IFormFile file)
         {
             var connectionString = _configuration.GetConnectionString("AzureStorageAccount");
-            var container = _uploadService.GetBlobContainer(connectionString);
+            var container = _uploadService.GetBlobContainer(connectionString, "forum-images");
             var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
             var filename = contentDisposition.FileName.Trim('"');
             var blockBlob = container.GetBlockBlobReference(filename);
-            blockBlob.UploadFromStreamAsync(file.OpenReadStream());
-            return blockBlob;
+            blockBlob.UploadFromStreamAsync(file.OpenReadStream()).Wait();
 
+            return blockBlob;
         }
 
         private ForumListingModel BuildForumListing(Forum forum)

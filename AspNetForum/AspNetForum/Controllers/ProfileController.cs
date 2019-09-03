@@ -57,7 +57,7 @@ namespace AspNetForum.Controllers
             var connectionString = _configuration.GetConnectionString("AzureStorageAccount");
             
             //get Blob Container
-            var container = _uploadService.GetBlobContainer(connectionString);
+            var container = _uploadService.GetBlobContainer(connectionString, "profile-images");
 
             //Parse the content disposition response header
             var contentDisposition = ContentDispositionHeaderValue.Parse(file.ContentDisposition);
